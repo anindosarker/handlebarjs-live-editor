@@ -1,4 +1,4 @@
-import "./style.css";
+import { context } from "./context/context";
 import Handlebars from "handlebars";
 
 const templatePath = "/src/templates/template.hbs";
@@ -13,12 +13,11 @@ async function fetchTemplate(url: string) {
 async function renderTemplate() {
   const templateSource = await fetchTemplate(templatePath);
   const template = Handlebars.compile(templateSource);
-  const context = {
-    title: "Vite + Handlebars",
-    description: "This is a Handlebars template rendered with Vite.",
-  };
+
   const html = template(context);
-  document.querySelector<HTMLDivElement>("#app")!.innerHTML = html;
+  document.open();
+  document.write(html);
+  document.close();
 }
 
 renderTemplate();

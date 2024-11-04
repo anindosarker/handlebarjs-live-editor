@@ -2,6 +2,8 @@
 
 This project is a Handlebars.js live editor to test out compiled templates with hot reload. It allows you to edit Handlebars templates and see the changes live in the browser.
 
+![Live Demo](public/example.png)
+
 ## Steps to Get Started
 
 1. **Install Dependencies**:

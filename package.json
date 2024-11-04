@@ -1,7 +1,12 @@
 {
-  "name": "handlebarjs-playground-live-editor",
-  "private": true,
-  "version": "0.0.0",
+  "name": "handlebarjs-live-editor",
+  "private": false,
+  "version": "1.0.0",
+  "author": "Anindo Sarker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anindosarker/handlebarjs-live-editor.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

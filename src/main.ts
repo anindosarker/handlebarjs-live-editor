@@ -1,24 +1,24 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import "./style.css";
+import Handlebars from "handlebars";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const templatePath = "/src/templates/template.hbs";
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+// Fetch the template
+async function fetchTemplate(url: string) {
+  const response = await fetch(url);
+  return response.text();
+}
+
+// Compile and render the template
+async function renderTemplate() {
+  const templateSource = await fetchTemplate(templatePath);
+  const template = Handlebars.compile(templateSource);
+  const context = {
+    title: "Vite + Handlebars",
+    description: "This is a Handlebars template rendered with Vite.",
+  };
+  const html = template(context);
+  document.querySelector<HTMLDivElement>("#app")!.innerHTML = html;
+}
+
+renderTemplate();
